@@ -1,4 +1,6 @@
 class BooksController < ApplicationController
+  before_filter :find_book, :only => [:show, :edit, :destroy]
+
   def index
     @books = Book.all
   end
@@ -8,10 +10,23 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
   end
 
   def edit
+  end
+
+  def create
+    @book = Book.new(params[:book])
+    if @book.save
+      redirect_to books_path
+    else
+      
+    end
+  end
+
+  private
+
+  def find_book
     @book = Book.find(params[:id])
   end
 end
