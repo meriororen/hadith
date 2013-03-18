@@ -19,7 +19,7 @@ group :assets do
   #
   gem 'therubyracer'
   gem 'twitter-bootstrap-rails'
-  #gem 'less-rails-bootstrap'
+  gem 'less-rails-bootstrap'
 
   gem 'uglifier', '>= 1.0.3'
 end

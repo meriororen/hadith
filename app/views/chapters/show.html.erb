@@ -1,8 +1,18 @@
-<h1><%= @chapter.title %></h1>
+<div class="page-header">
+  <h1><%= @chapter.title %></h1>
+</div>
 <table class="table table-striped">
+  <tr></tr>
 <% @chapter.hadits.each do |hadit| %>
   <tr>
-    <td><%= hadit.matan %></td>
+    <td>
+      <div>
+        <%= hadit.matan %>
+        <span class="label label-success">
+          <%= link_to :details, book_chapter_hadit_path(@book, @chapter, hadit) %>
+        </span>
+      </div>
+    </td>
   </tr>
 <% end %>
 </table>
