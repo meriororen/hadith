@@ -1,6 +1,17 @@
-Taeguk Warriors & Ninjas Project I: Hadith online reference
+== Taeguk Warriors & Ninjas Project I: Hadith online reference
 
-Ruby used : Ruby 1.9.3-p194
-Rails used : Rails 3.2.12
-Twitter-Bootstrap-Rails
+== Information
+
+* Ruby used : Ruby 1.9.3-p194
+* Rails used : Rails 3.2.12
+* Template : Twitter-Bootstrap-Rails
+
+== Getting Started
+
+You may want to pull the repository and run:
+
+  bundle install
+  rake db:migrate
+  rails server
+
 
