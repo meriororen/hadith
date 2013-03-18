@@ -1,7 +1,7 @@
 Hadith::Application.routes.draw do
   resources :books do
     resources :chapters, :except => [:index] do
-      resources :hadits
+      resources :hadits, :except => [:index]
     end
   end
 

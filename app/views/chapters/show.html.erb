@@ -1,3 +1,10 @@
-<div class="page-header">
-  <h1><%= @chapter.title %></h1>
-</div>
+<h1><%= @chapter.title %></h1>
+<table class="table table-striped">
+<% @chapter.hadits.each do |hadit| %>
+  <tr>
+    <td><%= hadit.matan %></td>
+  </tr>
+<% end %>
+</table>
+
+
