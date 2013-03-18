@@ -1,0 +1,25 @@
+<%- model_class = Book -%>
+<div class="page-header">
+  <h1>Available Books</h1>
+</div>
+
+<p class="lead"> List of Available Hadith Books </p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>Book Title</th>
+      <th>Book Author</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @books.each do |book| %>
+      <tr>
+        <td><%= book.id %></td>
+        <td><%= link_to book.title, book_path(book) %></td>
+        <td><%= book.author %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

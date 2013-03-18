@@ -1,5 +1,9 @@
 Hadith::Application.routes.draw do
-  resources :hadits
+  resources :books do
+    resources :chapters, :except => [:index] do
+      resources :hadits
+    end
+  end
 
 
   # The priority is based upon order of creation:

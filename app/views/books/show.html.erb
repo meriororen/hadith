@@ -1,0 +1,18 @@
+<%- model_class = Book -%>
+
+<div class="page-header">
+  <h1><%= @book.title %></h1>
+</div>
+<p class="lead">List of available chapters :</p>
+<ol>
+  <% @book.chapters.each do |chapter| %>
+    <li>
+      <%= link_to chapter.title, book_chapter_path(chapter) %>
+    </li>
+  <% end %>
+</ol>
+
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_book_chapter_path(@book),
+            :class => 'btn btn-primary' %>
+
