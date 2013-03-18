@@ -4,13 +4,14 @@
   <h1><%= @book.title %></h1>
 </div>
 <p class="lead">List of available chapters :</p>
-<ol>
+<table class="table table-striped">
   <% @book.chapters.each do |chapter| %>
-    <li>
-      <%= link_to chapter.title, book_chapter_path(chapter) %>
-    </li>
+    <tr>
+      <td><%= chapter.id %></td>
+      <td><%= link_to chapter.title, book_chapter_path(chapter) %></td>
+    </tr>
   <% end %>
-</ol>
+</table>
 
 <%= link_to t('.new', :default => t("helpers.links.new")),
             new_book_chapter_path(@book),
