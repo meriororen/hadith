@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_filter :find_book, :only => [:show, :edit, :destroy]
+  before_filter :find_book, :only => [:show, :edit, :destroy, :update]
 
   def index
     @books = Book.all
@@ -27,6 +27,14 @@ class BooksController < ApplicationController
   def destroy
     if @book.destroy 
       redirect_to books_path
+    end
+  end
+
+  def update
+    if @book.update_attributes(params[:book])
+      redirect_to books_path, notice: "Book updated."
+    else
+      render :action => 'edit'
     end
   end
 

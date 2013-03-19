@@ -16,7 +16,9 @@
 <% end %>
 </table>
 
-<%= link_to t('.new', :default => t("helpers.links.new")),
+<%= link_to "Back", 
+  book_path(@book), :class => 'btn' %>
+<%= link_to "Add Hadith",
             new_book_chapter_hadit_path(@book, @chapter),
             :class => 'btn btn-primary' %>
 

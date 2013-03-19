@@ -19,7 +19,11 @@ class ChaptersController < ApplicationController
   end
 
   def update
-
+    if @chapter.update_attributes(params[:chapter])
+      redirect_to @book, notice: 'Chapter was successfully updated.'
+    else
+      render action: 'edit'
+    end
   end
 
   def create
@@ -27,11 +31,17 @@ class ChaptersController < ApplicationController
 
     if @chapter.save
       flash[:notice] = "Chapter has been created."
-      redirect_to [@book, @chapter]
+      redirect_to book_path(@book)
     else
       flash[:alert] = "Chapter has not been created."
       render :action => "new"
     end
+  end
+
+  def destroy
+    @chapter.destroy
+
+    redirect_to book_path(@book)
   end
 
   private
