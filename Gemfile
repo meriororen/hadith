@@ -20,7 +20,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
   #
   gem 'therubyracer'
-  gem 'twitter-bootstrap-rails'
+  gem 'twitter-bootstrap-rails', '>= 2.1.6'
   gem 'less-rails-bootstrap'
 
   gem 'uglifier', '>= 1.0.3'
