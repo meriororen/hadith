@@ -20,9 +20,10 @@ class ChaptersController < ApplicationController
 
   def update
     if @chapter.update_attributes(params[:chapter])
-      redirect_to @book, notice: 'Chapter was successfully updated.'
+      flash[:success] = "Chapter has successfully updated."
+      redirect_to @book
     else
-      render action: 'edit'
+      render action: 'edit', :flash => { :failed => 'Check again' }
     end
   end
 
@@ -30,7 +31,7 @@ class ChaptersController < ApplicationController
     @chapter = @book.chapters.build(params[:chapter])
 
     if @chapter.save
-      flash[:notice] = "Chapter has been created."
+      flash[:success] = "Chapter has been created."
       redirect_to book_path(@book)
     else
       flash[:alert] = "Chapter has not been created."
@@ -41,7 +42,7 @@ class ChaptersController < ApplicationController
   def destroy
     @chapter.destroy
 
-    redirect_to book_path(@book)
+    redirect_to book_path(@book), :flash => { :success => "Chapter removed from #{@book.title}" }
   end
 
   private

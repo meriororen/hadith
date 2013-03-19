@@ -28,15 +28,15 @@ class BooksController < ApplicationController
 
   def destroy
     if @book.destroy 
-      redirect_to books_path
+      redirect_to books_path, :flash => { :success => "Book removed" }
     end
   end
 
   def update
     if @book.update_attributes(params[:book])
-      redirect_to books_path, notice: "Book updated."
+      redirect_to books_path, :flash => { :success => "Book updated." }
     else
-      render :action => 'edit'
+      render :action => 'edit', :flash => { :failed => "Check again." }
     end
   end
 

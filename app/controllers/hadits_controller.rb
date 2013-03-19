@@ -1,5 +1,5 @@
 class HaditsController < ApplicationController
-  before_filter :find_book_and_chapter, :only => [:new, :show, :edit, :destroy, :create]
+  before_filter :find_book_and_chapter, :only => [:new, :show, :edit, :destroy, :create, :update]
 
   # GET /hadits/1
   # GET /hadits/1.json
@@ -25,8 +25,9 @@ class HaditsController < ApplicationController
 
     respond_to do |format|
       if @hadit.save
-        format.html { redirect_to [@book, @chapter, @hadit], notice: 'Hadit was successfully created.' }
+        format.html { redirect_to [@book, @chapter, @hadit], :flash => { :success => 'Hadit was successfully created.'}}
       else
+        flash[:alert] = "Check again"
         format.html { render action: "new" }
       end
     end
@@ -39,8 +40,10 @@ class HaditsController < ApplicationController
 
     respond_to do |format|
       if @hadit.update_attributes(params[:hadit])
-        format.html { redirect_to [@book, @chapter, @hadit], notice: 'Hadit was successfully updated.' }
+        flash[:success] = "Hadith was successfully updated."
+        format.html { redirect_to book_chapter_path(@book, @chapter) }
       else
+        flash[:alert] = "Check again."
         format.html { render action: "edit" }
       end
     end

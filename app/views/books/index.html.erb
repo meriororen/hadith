@@ -19,7 +19,7 @@
         <td><%= book.id %></td>
         <td><%= link_to book.title, book_path(book) %></td>
         <td><%= book.author %></td>
-        <td>
+        <td style="text-align: right;">
           <%= link_to raw('<i class="icon-pencil"></i>'),
           edit_book_path(book), :alt => "Edit this book" %>
           <%= link_to raw('<i class="icon-remove"></i>'), 
