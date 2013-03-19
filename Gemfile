@@ -7,6 +7,13 @@ gem 'rails', '3.2.12'
 
 group :development, :test do
   gem 'sqlite3'
+  gem 'rspec-rails', '~> 2.5'
+end
+
+group :test do
+  gem 'cucumber-rails'
+  gem 'capybara'
+  gem 'database_cleaner'
 end
 
 gem 'devise', '~> 1.4.3'
