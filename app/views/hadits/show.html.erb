@@ -1,7 +1,10 @@
 <%- model_class = Hadit -%>
 
 <div class="page-header"></div>
-<p class="lead"><%= @chapter.title %>, <%= @book.title %> </p>
+<p class="lead">
+  <%= link_to @chapter.title, book_chapter_path(@book, @chapter) %>, 
+  <%= link_to @book.title, book_path(@book) %> 
+</p>
 <p><%= @hadit.matan %></p>
 
 <div class="form-actions">
