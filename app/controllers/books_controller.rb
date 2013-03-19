@@ -2,6 +2,7 @@ class BooksController < ApplicationController
   before_filter :find_book, :only => [:show, :edit, :destroy, :update]
 
   def index
+    puts "asdfasdfasdf"
     @books = Book.all
   end
 
@@ -16,11 +17,12 @@ class BooksController < ApplicationController
   end
 
   def create
+    puts "createingadfasf"
     @book = Book.new(params[:book])
     if @book.save
       redirect_to books_path
     else
-      
+      render action => 'new', :flash => { :failed => "Failed adding book" }
     end
   end
 

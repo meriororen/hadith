@@ -1,9 +1,9 @@
 Hadith::Application.routes.draw do
   root :to => 'books#index'
 
-  resources :books, :path => '' do
-    resources :chapters, :path => '', :except => [:index] do
-      resources :hadits, :path => '', :except => [:index]
+  resources :books do
+    resources :chapters, :except => [:index] do
+      resources :hadits, :except => [:index]
     end
   end
 

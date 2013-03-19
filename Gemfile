@@ -30,6 +30,7 @@ gem 'jquery-rails'
 
 group :development do
   gem 'capistrano'
+  gem 'rvm-capistrano'
 end
 
 group :production do
