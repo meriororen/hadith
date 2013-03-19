@@ -1,4 +1,6 @@
 Hadith::Application.routes.draw do
+  devise_for :users
+
   root :to => 'books#index'
 
   resources :books do
@@ -6,6 +8,8 @@ Hadith::Application.routes.draw do
       resources :hadits, :except => [:index]
     end
   end
+
+  devise_for :users
 
 
   # The priority is based upon order of creation:
