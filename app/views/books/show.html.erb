@@ -8,7 +8,7 @@
   <% @book.chapters.each do |chapter| %>
     <tr>
       <td><%= chapter.id %></td>
-      <td><%= link_to chapter.title, book_chapter_path(chapter) %></td>
+      <td><%= link_to chapter.title, book_chapter_path(@book, chapter) %></td>
       <td>
         <%= link_to raw('<i class="icon-pencil"></i>'),
           edit_book_chapter_path(@book, chapter), :alt => "Edit this chapter" %>
