@@ -7,13 +7,15 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="navbar navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#">Hadith</a>
+          <a class="brand" href="/">{Hadith}</a>
           <div class="nav-collapse">
             <ul class="nav">
               <li><%= link_to "Browse books", books_path %></li>
+              <li><%= link_to "[Sign up", new_user_registration_path unless user_signed_in? %></li>
+              <li><%= link_to "Sign in]", new_user_session_path unless user_signed_in? %></li>
             </ul>
           </div>
         </div>
@@ -22,25 +24,33 @@
 
     <div id="wrap">
       <div class="container">
-        <% flash.each do |key, value| %>
-          <div class="alert alert-<%= key %>">
-            <%= value %>
-          </div>
-        <% end %>
-        <%= yield %>
-      </div>
-      <div id="push"></div>
+        <% if user_signed_in? %>
+          <div class="row">
+            <p class="text-warning pull-right"> 
+            Signed in as : <%= current_user.email %> | 
+            <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+          </p>
+        </div>
+      <% end %>
+      <% flash.each do |key, value| %>
+        <div class="alert alert-<%= key %>">
+          <%= value %>
+        </div>
+      <% end %>
+      <%= yield %>
     </div>
+    <div id="push"></div>
+  </div>
 
-    <div id="footer">
-      <div class="container">
-        <p class="muted credit">
-        Copylefted to 
-        <a href="#">TaegukWarriors</a>
-        and 
-        <a href="#">Ninjas</a>.
-        </p>
-      </div>
+  <div id="footer">
+    <div class="container">
+      <p class="muted credit">
+      Copylefted to 
+      <a href="#">TaegukWarriors</a>
+      and 
+      <a href="#">Ninjas</a>.
+      </p>
     </div>
-  </body>
+  </div>
+</body>
 </html>
