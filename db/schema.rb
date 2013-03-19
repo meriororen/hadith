@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130319044117) do
+ActiveRecord::Schema.define(:version => 20130319084730) do
 
   create_table "books", :force => true do |t|
     t.string   "title"
@@ -28,9 +28,9 @@ ActiveRecord::Schema.define(:version => 20130319044117) do
   end
 
   create_table "hadits", :force => true do |t|
-    t.string   "matan"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.text     "matan",      :limit => 255
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
     t.integer  "chapter_id"
   end
 
