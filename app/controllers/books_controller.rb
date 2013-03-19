@@ -24,6 +24,12 @@ class BooksController < ApplicationController
     end
   end
 
+  def destroy
+    if @book.destroy 
+      redirect_to books_path
+    end
+  end
+
   private
 
   def find_book

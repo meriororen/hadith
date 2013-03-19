@@ -19,6 +19,13 @@
         <td><%= book.id %></td>
         <td><%= link_to book.title, book_path(book) %></td>
         <td><%= book.author %></td>
+        <td>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      book_path(book),
+                      :method => 'delete',
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>

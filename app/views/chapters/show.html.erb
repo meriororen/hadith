@@ -1,16 +1,15 @@
 <div class="page-header">
   <h1><%= @chapter.title %></h1>
 </div>
+<p class="lead">List of hadits in this chapter</p>
 <table class="table table-striped">
-  <tr></tr>
 <% @chapter.hadits.each do |hadit| %>
   <tr>
+    <td> <%= hadit.id %></td>
     <td>
       <div>
         <%= hadit.matan %>
-        <span class="label label-success">
-          <%= link_to :details, book_chapter_hadit_path(@book, @chapter, hadit) %>
-        </span>
+        <%= link_to :details, book_chapter_hadit_path(@book, @chapter, hadit), :html => {:class => "btn btn-info"} %>
       </div>
     </td>
   </tr>
