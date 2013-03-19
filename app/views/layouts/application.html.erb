@@ -14,8 +14,7 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li><%= link_to "Browse books", books_path %></li>
-              <li><%= link_to "[Sign up", new_user_registration_path unless user_signed_in? %></li>
-              <li><%= link_to "Sign in]", new_user_session_path unless user_signed_in? %></li>
+              <li><%= link_to "Sign in", new_user_session_path unless user_signed_in? %></li>
             </ul>
           </div>
         </div>

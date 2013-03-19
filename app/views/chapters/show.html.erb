@@ -20,6 +20,6 @@
   book_path(@book), :class => 'btn' %>
 <%= link_to "Add Hadith",
             new_book_chapter_hadit_path(@book, @chapter),
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-primary' if user_signed_in? %>
 
 

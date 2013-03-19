@@ -9,12 +9,14 @@
     <tr>
       <td><%= chapter.id %></td>
       <td><%= link_to chapter.title, book_chapter_path(@book, chapter) %></td>
-      <td style="text-align: right;">
-        <%= link_to raw('<i class="icon-pencil"></i>'),
-          edit_book_chapter_path(@book, chapter), :alt => "Edit this chapter" %>
-        <%= link_to raw('<i class="icon-remove"></i>'), 
-          book_chapter_path(@book, chapter), confirm: 'Are you sure?', method: :delete, :alt => "Delete this chapter" %>
-      </td>
+      <% if user_signed_in? %>
+        <td style="text-align: right;">
+          <%= link_to raw('<i class="icon-pencil"></i>'),
+            edit_book_chapter_path(@book, chapter), :alt => "Edit this chapter" %>
+          <%= link_to raw('<i class="icon-remove"></i>'), 
+            book_chapter_path(@book, chapter), confirm: 'Are you sure?', method: :delete, :alt => "Delete this chapter" %>
+        </td>
+      <% end %>
     </tr>
   <% end %>
 </table>
@@ -24,5 +26,5 @@
             :class => 'btn' %>
 <%= link_to "New Chapter",
             new_book_chapter_path(@book),
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-primary' if user_signed_in?%>
 

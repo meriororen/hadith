@@ -19,11 +19,14 @@
         <td><%= book.id %></td>
         <td><%= link_to book.title, book_path(book) %></td>
         <td><%= book.author %></td>
-        <td style="text-align: right;">
-          <%= link_to raw('<i class="icon-pencil"></i>'),
-          edit_book_path(book), :alt => "Edit this book" %>
-          <%= link_to raw('<i class="icon-remove"></i>'), 
-          book_path(book), confirm: 'Are you sure?', method: :delete, :alt => "Delete this book" %></td>
+        <% if user_signed_in? %>
+          <td style="text-align: right;">
+            <%= link_to raw('<i class="icon-pencil"></i>'),
+            edit_book_path(book), :alt => "Edit this book" %>
+            <%= link_to raw('<i class="icon-remove"></i>'), 
+              book_path(book), confirm: 'Are you sure?', method: :delete, :alt => "Delete this book" %>
+          </td>
+      <% end %>
       </tr>
     <% end %>
   </tbody>
@@ -31,4 +34,4 @@
 
 <%= link_to "New Book",
             new_book_path(@book),
-            :class => 'btn btn-primary' %>
+            :class => 'btn btn-primary' if user_signed_in?%>
