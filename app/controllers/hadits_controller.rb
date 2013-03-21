@@ -1,4 +1,5 @@
 class HaditsController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show]
   before_filter :find_book_and_chapter, only: [:new, :show, :edit, :destroy, :create, :update]
 
   # GET /hadits/1

@@ -1,21 +1,16 @@
 class ChaptersController < ApplicationController
+  before_filter :authenticate_user!, :except => [:show]
   before_filter :find_book
   before_filter :find_chapter, only: [:show, :edit, :update, :destroy]
-
-  def index
-
-  end
 
   def new
     @chapter = @book.chapters.build
   end
 
   def show
-
   end
 
   def edit
-
   end
 
   def update
