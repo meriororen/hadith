@@ -12,9 +12,9 @@
       <% if user_signed_in? %>
         <td style="text-align: right;">
           <%= link_to raw('<i class="icon-pencil"></i>'),
-            edit_book_chapter_path(@book, chapter), :alt => "Edit this chapter" %>
+            edit_book_chapter_path(@book, chapter), alt: "Edit this chapter" %>
           <%= link_to raw('<i class="icon-remove"></i>'), 
-            book_chapter_path(@book, chapter), confirm: 'Are you sure?', method: :delete, :alt => "Delete this chapter" %>
+            book_chapter_path(@book, chapter), confirm: 'Are you sure?', method: :delete, alt: "Delete this chapter" %>
         </td>
       <% end %>
     </tr>
@@ -23,8 +23,8 @@
 
 <%= link_to "Back",
             books_path,
-            :class => 'btn' %>
+            class: 'btn' %>
 <%= link_to "New Chapter",
             new_book_chapter_path(@book),
-            :class => 'btn btn-primary' if user_signed_in?%>
+            class: 'btn btn-primary' if user_signed_in?%>
 

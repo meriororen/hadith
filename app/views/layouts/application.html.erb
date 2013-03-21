@@ -2,7 +2,7 @@
 <html>
   <head>
     <title>Hadith</title>
-    <%= stylesheet_link_tag    "application", :media => "all" %>
+    <%= stylesheet_link_tag    "application", media: "all" %>
     <%= javascript_include_tag "application" %>
     <%= csrf_meta_tags %>
   </head>
@@ -14,8 +14,12 @@
           <div class="nav-collapse">
             <ul class="nav">
               <li><%= link_to "Browse books", books_path %></li>
-              <li><%= link_to "Sign in", new_user_session_path unless user_signed_in? %></li>
             </ul>
+            <% unless user_signed_in? %>
+              <ul class="nav pull-right">
+                <li><%= link_to "Sign in", new_user_session_path %></li>
+              </ul>
+            <% end %>
           </div>
         </div>
       </div>
@@ -27,7 +31,7 @@
           <div class="row">
             <p class="text-warning pull-right"> 
             Signed in as : <%= current_user.email %> | 
-            <%= link_to "Log out", destroy_user_session_path, :method => :delete %>
+            <%= link_to "Log out", destroy_user_session_path, method: :delete %>
           </p>
         </div>
       <% end %>

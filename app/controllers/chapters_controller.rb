@@ -1,6 +1,6 @@
 class ChaptersController < ApplicationController
   before_filter :find_book
-  before_filter :find_chapter, :only => [:show, :edit, :update, :destroy]
+  before_filter :find_chapter, only: [:show, :edit, :update, :destroy]
 
   def index
 
@@ -23,7 +23,7 @@ class ChaptersController < ApplicationController
       flash[:success] = "Chapter has successfully updated."
       redirect_to @book
     else
-      render action: 'edit', :flash => { :failed => 'Check again' }
+      render action: 'edit', flash: { failed: 'Check again' }
     end
   end
 
@@ -35,14 +35,14 @@ class ChaptersController < ApplicationController
       redirect_to book_path(@book)
     else
       flash[:alert] = "Chapter has not been created."
-      render :action => "new"
+      render action: "new"
     end
   end
 
   def destroy
     @chapter.destroy
 
-    redirect_to book_path(@book), :flash => { :success => "Chapter removed from #{@book.title}" }
+    redirect_to book_path(@book), flash: { success: "Chapter removed from #{@book.title}" }
   end
 
   private

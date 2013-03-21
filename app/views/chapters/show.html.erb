@@ -9,7 +9,7 @@
     <td>
       <div>
         <%= hadit.matan %>
-        <%= link_to :details, book_chapter_hadit_path(@book, @chapter, hadit), :html => {:class => "btn btn-info"} %>
+        <%= link_to :details, book_chapter_hadit_path(@book, @chapter, hadit), html: {class: "btn btn-info"} %>
       </div>
     </td>
   </tr>
@@ -17,9 +17,9 @@
 </table>
 
 <%= link_to "Back", 
-  book_path(@book), :class => 'btn' %>
+  book_path(@book), class: 'btn' %>
 <%= link_to "Add Hadith",
             new_book_chapter_hadit_path(@book, @chapter),
-            :class => 'btn btn-primary' if user_signed_in? %>
+            class: 'btn btn-primary' if user_signed_in? %>
 
 

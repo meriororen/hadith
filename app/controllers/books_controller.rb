@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_filter :find_book, :only => [:show, :edit, :destroy, :update]
+  before_filter :find_book, only: [:show, :edit, :destroy, :update]
 
   def index
     puts "asdfasdfasdf"
@@ -22,21 +22,21 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to books_path
     else
-      render action => 'new', :flash => { :failed => "Failed adding book" }
+      render action => 'new', flash: { failed: "Failed adding book" }
     end
   end
 
   def destroy
     if @book.destroy 
-      redirect_to books_path, :flash => { :success => "Book removed" }
+      redirect_to books_path, flash: { success: "Book removed" }
     end
   end
 
   def update
     if @book.update_attributes(params[:book])
-      redirect_to books_path, :flash => { :success => "Book updated." }
+      redirect_to books_path, flash: { success: "Book updated." }
     else
-      render :action => 'edit', :flash => { :failed => "Check again." }
+      render action: "edit", flash: { failed: "Book failed to update." }
     end
   end
 
