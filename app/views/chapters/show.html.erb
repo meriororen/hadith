@@ -1,25 +1,28 @@
 <div class="page-header">
   <h1><%= @chapter.title %></h1>
 </div>
-<p class="lead">List of hadits in this chapter</p>
-<table class="table table-striped">
-<% @chapter.hadits.each do |hadit| %>
-  <tr>
-    <td> <%= hadit.id %></td>
-    <td>
-      <div>
-        <%= hadit.matan %>
-        <%= link_to :details, book_chapter_hadit_path(@book, @chapter, hadit), html: {class: "btn btn-info"} %>
-      </div>
-    </td>
-  </tr>
+
+<% @chapter.sections.each do |section| %>
+  <p class="lead"><%= section.title %></p>
+  <table class="table table-striped">
+    <% section.hadits.each do |hadit| %>
+      <tr>
+        <td> <%= hadit.id %></td>
+        <td>
+          <div>
+            <%= hadit.matan %>
+            <%= link_to :details, book_chapter_hadit_path(@book, @chapter, hadit), html: {class: "btn btn-info"} %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+  </table>
 <% end %>
-</table>
 
 <%= link_to "Back", 
   book_path(@book), class: 'btn' %>
 <%= link_to "Add Hadith",
-            new_book_chapter_hadit_path(@book, @chapter),
-            class: 'btn btn-primary' if user_signed_in? %>
+  new_book_chapter_hadit_path(@book, @chapter),
+  class: 'btn btn-primary' if user_signed_in? %>
 
 
