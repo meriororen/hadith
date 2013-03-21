@@ -1,0 +1,15 @@
+<%= form_for [@book, @chapter, @section], html: { class: 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :section_number, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :scnum, class: 'text_field' %>
+    </div><br/>
+    <%= f.label :title, class: 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :title, class: 'text_field' %>
+    </div>
+  </div>
+  <div class="form-actions">
+    <%= f.submit nil, class: 'btn btn-primary' %>
+    <%= link_to t('.cancel', default:t("helpers.links.cancel")), book_chapter_path(@book, @chapter), class: 'btn' %>
+<% end %>

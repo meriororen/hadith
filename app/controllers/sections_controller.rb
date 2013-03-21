@@ -1,6 +1,6 @@
 class SectionsController < ApplicationController
-  before_filter :find_section
-  before_filter :find_chapter
+  before_filter :find_section, :only => [:destroy, :create, :edit, :update]
+  before_filter :find_book_and_chapter
 
   def new
 
@@ -18,10 +18,19 @@ class SectionsController < ApplicationController
 
   end
 
+  def update
+    if @section.update_attributes!(params[:section])
+      redirect_to [@book, @chapter], flash: { success: "Section successfully updated." }
+    else
+      render action: "edit", flash: { failed: "Section failed to update." }
+    end
+  end
+
   private
 
-  def find_chapter
-    @chapter = Book.chapters.find(params[:chapter])
+  def find_book_and_chapter
+    @book = Book.find(params[:book_id])
+    @chapter = @book.chapters.find(params[:chapter_id])
   end
 
   def find_section

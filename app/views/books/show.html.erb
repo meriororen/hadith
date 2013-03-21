@@ -7,7 +7,7 @@
 <table class="table table-striped">
   <% @book.chapters.each do |chapter| %>
     <tr>
-      <td><%= chapter.id %></td>
+      <td><%= chapter.chnum %></td>
       <td><%= link_to chapter.title, book_chapter_path(@book, chapter) %></td>
       <% if user_signed_in? %>
         <td style="text-align: right;">

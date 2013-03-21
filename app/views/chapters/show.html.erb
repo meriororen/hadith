@@ -3,11 +3,14 @@
 </div>
 
 <% @chapter.sections.each do |section| %>
-  <p class="lead"><%= section.title %></p>
+  <h3><%= section.scnum %>. <%= section.title %></h3>
+  <span class="pull-right" style="position: relative; top: -37px;">
+    <%= link_to "Edit Section", edit_book_chapter_section_path(@book, @chapter, section) %>
+  </span>
   <table class="table table-striped">
     <% section.hadits.each do |hadit| %>
       <tr>
-        <td> <%= hadit.id %></td>
+        <td> <%= hadit.hdnum %></td>
         <td>
           <div>
             <%= hadit.matan %>
