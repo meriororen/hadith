@@ -14,4 +14,10 @@ You may want to pull the repository and run:
   rake db:migrate
   rails server
 
+== Rules
+
+Syntax rules :
+
+* Prefer "key: value" syntax rather than ":key => value"
+
 
