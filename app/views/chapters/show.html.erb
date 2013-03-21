@@ -2,13 +2,13 @@
   <h1><%= @chapter.title %></h1>
 </div>
 
-<% @chapter.sections.each do |section| %>
+<% @chapter.sections.sort_by(&:scnum).each do |section| %>
   <h3><%= section.scnum %>. <%= section.title %></h3>
   <span class="pull-right" style="position: relative; top: -37px;">
     <%= link_to "Edit Section", edit_book_chapter_section_path(@book, @chapter, section) %>
   </span>
   <table class="table table-striped">
-    <% section.hadits.each do |hadit| %>
+    <% section.hadits.sort_by(&:hdnum).each do |hadit| %>
       <tr>
         <td> <%= hadit.hdnum %></td>
         <td>
