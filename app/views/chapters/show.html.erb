@@ -3,10 +3,14 @@
 </div>
 
 <% @chapter.sections.sort_by(&:scnum).each do |section| %>
-  <h3><%= section.scnum %>. <%= section.title %></h3>
-  <span class="pull-right" style="position: relative; top: -37px;">
-    <%= link_to "Edit Section", edit_book_chapter_section_path(@book, @chapter, section) %>
-  </span>
+  <h4>
+    <%= section.scnum %>. <%= section.title %>
+    <% if user_signed_in? %>
+      <span class="pull-right" style="font-size: 70%">
+        <%= link_to "Edit Section", edit_book_chapter_section_path(@book, @chapter, section) %>
+      </span>
+    <% end %>
+  </h4>
   <table class="table table-striped">
     <% section.hadits.sort_by(&:hdnum).each do |hadit| %>
       <tr>
