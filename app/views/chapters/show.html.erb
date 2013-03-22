@@ -1,16 +1,24 @@
 <div class="page-header">
-  <h1><%= @chapter.title %></h1>
+  <h1>
+    <%= @chapter.title %>
+    <% if user_signed_in? %>
+      <span class="pull-right" style="font-size: 30%">
+        <%= link_to "Add Section", new_book_chapter_section_path(@book, @chapter), class: "btn btn-primary" %>
+      </span>
+    <% end %>
+  </h1>
 </div>
 
 <% @chapter.sections.sort_by(&:scnum).each do |section| %>
-  <h4>
+  <h3>
     <%= section.scnum %>. <%= section.title %>
     <% if user_signed_in? %>
-      <span class="pull-right" style="font-size: 70%">
-        <%= link_to "Edit Section", edit_book_chapter_section_path(@book, @chapter, section) %>
+      <span class="pull-right" style="font-size: 50%">
+        <%= link_to "Edit Section", edit_book_chapter_section_path(@book, @chapter, section) %> |
+        <%= link_to "Add Hadith", new_book_chapter_hadit_path(@book, @chapter, section) %>
       </span>
     <% end %>
-  </h4>
+  </h3>
   <table class="table table-striped">
     <% section.hadits.sort_by(&:hdnum).each do |hadit| %>
       <tr>
@@ -25,11 +33,3 @@
     <% end %>
   </table>
 <% end %>
-
-<%= link_to "Back", 
-  book_path(@book), class: 'btn' %>
-<%= link_to "Add Hadith",
-  new_book_chapter_hadit_path(@book, @chapter),
-  class: 'btn btn-primary' if user_signed_in? %>
-
-

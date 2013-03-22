@@ -3,15 +3,21 @@ class SectionsController < ApplicationController
   before_filter :find_book_and_chapter
 
   def new
-
+    @section = @chapter.sections.build
   end
 
   def edit
-
+    
   end
 
   def create
+    @section = @chapter.sections.build(params[:section])
 
+    if @section.save
+      redirect_to [@book, @chapter], flash: { success: "Section successfully created." }
+    else
+      render action: "new", flash: { failed: "Section failed to save." }
+    end
   end
 
   def destroy
