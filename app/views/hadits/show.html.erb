@@ -5,7 +5,7 @@
   <%= link_to @chapter.title, book_chapter_path(@book, @chapter) %>, 
   <%= link_to @book.title, book_path(@book) %> 
 </p>
-<p><%= @hadit.matan %></p>
+<p class="hadit-matan"><%= @hadit.matan %></p>
 
 <% if user_signed_in? %>
   <div class="form-actions">
@@ -21,5 +21,7 @@
   </div>
 <% else %>
   <div class="form-actions">
+		<%= link_to :tweet, "http://#{request.host}:#{request.fullpath}", class: "twitter-share-button" %>
   </div>
 <% end %>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
