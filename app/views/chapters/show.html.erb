@@ -1,24 +1,26 @@
-<div class="page-header">
+<div class="page-header" style="text-align: center;">
   <h1>
     <%= @chapter.title %>
-    <% if user_signed_in? %>
-      <span class="pull-right" style="font-size: 30%">
-        <%= link_to "Add Section", new_book_chapter_section_path(@book, @chapter), class: "btn btn-primary" %>
-      </span>
-    <% end %>
+    <br/>
+    <span style="font-size: 30%">
+      <%= link_to "Back", book_path(@book), class: "btn btn-small" %>
+      <%= link_to "Add Section", new_book_chapter_section_path(@book, @chapter), 
+        class: "btn btn-primary btn-small" if user_signed_in? %>
+    </span>
   </h1>
 </div>
 
 <% @chapter.sections.sort_by(&:scnum).each do |section| %>
-  <h3>
-    <%= section.scnum %>. <%= section.title %>
+  <div class="lead" style="text-align: center;">
+    <%= section.title %>
+    <br/>
     <% if user_signed_in? %>
-      <span class="pull-right" style="font-size: 50%">
+      <span style="font-size: 50%">
         <%= link_to "Edit Section", edit_book_chapter_section_path(@book, @chapter, section) %> |
         <%= link_to "Add Hadith", new_book_chapter_hadit_path(@book, @chapter, section) %>
       </span>
     <% end %>
-  </h3>
+  </div>
   <table class="table table-striped">
     <% section.hadits.sort_by(&:hdnum).each do |hadit| %>
       <tr>
