@@ -21,10 +21,10 @@
       </span>
     <% end %>
   </div>
-  <table class="table table-striped">
+  <table class="table table-striped table-hover">
     <% section.hadits.sort_by(&:hdnum).each do |hadit| %>
       <tr>
-        <td> <%= hadit.hdnum %></td>
+        <td><span class="badge badge-info"><%= hadit.hdnum %></span></td>
         <td>
           <div>
             <%= hadit.matan %>

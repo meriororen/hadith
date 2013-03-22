@@ -24,7 +24,7 @@
       <tbody>
         <% @chapters.each do |chapter| %>
           <tr>
-            <td><%= chapter.chnum %></td>
+            <td><span class="badge badge-info"><%= chapter.chnum %></span></td>
             <td><%= link_to chapter.title, book_chapter_path(@book, chapter) %></td>
             <% if user_signed_in? %>
               <td width="150">
