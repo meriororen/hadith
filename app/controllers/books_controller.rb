@@ -3,7 +3,6 @@ class BooksController < ApplicationController
   before_filter :find_book, only: [:show, :edit, :destroy, :update]
 
   def index
-    puts "asdfasdfasdf"
     @books = Book.all
   end
 
@@ -12,13 +11,13 @@ class BooksController < ApplicationController
   end
 
   def show
+    @chapters = @book.chapters.sort_by(&:chnum)
   end
 
   def edit
   end
 
   def create
-    puts "createingadfasf"
     @book = Book.new(params[:book])
     if @book.save
       redirect_to books_path
